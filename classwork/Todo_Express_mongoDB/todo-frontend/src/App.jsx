@@ -7,9 +7,9 @@ function App() {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("low");
 
-  // GET TODOS
+  // GET TODOS this is best thing
   const fetchTodos = async () => {
-    try {
+    try { 
       const res = await fetch(API);
       const data = await res.json();
       setTodos(data);
