@@ -3,5 +3,5 @@ const app = require("./app");
 const PORT = 3000;
 
 app.listen(PORT,()=>{
-    console.log(`server runing on http://localhost:`)
+    console.log(`server runing on http://localhost:${PORT}`);
 });
