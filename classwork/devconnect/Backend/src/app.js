@@ -8,3 +8,4 @@ app.get("/",(req,res) =>{
     res.send("hello from the server");
 });
 
+module.exports();
