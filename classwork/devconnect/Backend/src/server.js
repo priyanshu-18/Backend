@@ -1,3 +1,7 @@
 const app = require("./app");
 
-const PORT = 
+const PORT = 3000;
+
+app.listen(PORT,()=>{
+    
+});
