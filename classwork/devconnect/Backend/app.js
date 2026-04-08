@@ -8,7 +8,7 @@ app.get("/",(req,res) =>{
     res.send("hello from the server");
 });
 
-// hi i am pp and i want to something crzy and all
+
 app.get("/me", (req, res) => {
     const token = req.headers.authorization;
     const user = users.find(user => user.token === token);
