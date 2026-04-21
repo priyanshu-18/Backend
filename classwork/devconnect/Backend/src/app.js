@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
-app.user(express.static())
+app.user(express.static("public"));
 
 app.get("/",(req,res) =>{
     res.send("hello from the server");
