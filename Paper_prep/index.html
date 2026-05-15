@@ -2,26 +2,16 @@
 <html>
 
 <head>
-    <title>Student App</title>
+    <title>Get Students</title>
 </head>
 
 <body>
 
-    <h1>Student Form</h1>
+    <h1>Students List</h1>
 
-    <input type="text" id="name" placeholder="Enter Name">
-
-    <input type="number" id="age" placeholder="Enter Age">
-
-    <button onclick="addStudent()">
-        Add Student
-    </button>
-
-    <button onclick="getStudents()">
+    <button id="btn">
         Get Students
     </button>
-
-    <hr>
 
     <table border="1">
 
@@ -32,51 +22,20 @@
             </tr>
         </thead>
 
-        <tbody id="tbody"></tbody>
+        <tbody id="tbody">
+
+        </tbody>
 
     </table>
 
 
+
     <script>
 
-        // ADD STUDENT
-        function addStudent() {
+        // Button Click
+        document.getElementById("btn").addEventListener("click", () => {
 
-            let name = document.getElementById("name").value;
-
-            let age = document.getElementById("age").value;
-
-
-            fetch("/students", {
-
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    name: name,
-                    age: age
-                })
-
-            })
-
-            .then(res => res.json())
-
-            .then(data => {
-
-                alert(data.message);
-
-            });
-
-        }
-
-
-
-        // GET STUDENTS
-        function getStudents() {
-
+            // Fetch API
             fetch("/students")
 
             .then(res => res.json())
@@ -85,6 +44,7 @@
 
                 let rows = "";
 
+                // Loop through data
                 data.forEach(student => {
 
                     rows += `
@@ -96,11 +56,12 @@
 
                 });
 
+                // Display data
                 document.getElementById("tbody").innerHTML = rows;
 
             });
 
-        }
+        });
 
     </script>
 
