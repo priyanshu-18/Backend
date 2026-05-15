@@ -1,19 +1,23 @@
 const express = require("express");
+
 const app = express();
 
+
+// Middleware
 app.use(express.json());
+
 app.use(express.static(__dirname));
 
 
-// Array data
-let students = [
-    { name: "Rahul", age: 20 }
-];
+// Array
+let students = [];
 
 
 // GET API
 app.get("/students", (req, res) => {
+
     res.send(students);
+
 });
 
 
@@ -23,8 +27,7 @@ app.post("/students", (req, res) => {
     students.push(req.body);
 
     res.send({
-        message: "Student Added",
-        data: students
+        message: "Student Added"
     });
 
 });
@@ -32,5 +35,7 @@ app.post("/students", (req, res) => {
 
 // Server
 app.listen(3000, () => {
-    console.log("Server running");
+
+    console.log("Server Started");
+
 });
