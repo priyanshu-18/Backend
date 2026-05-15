@@ -1,104 +1,211 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Students</title>
+    <title>Student App</title>
 </head>
+
 <body>
 
-<h1>Add Student</h1>
+    <h1>Student Form</h1>
 
-<input type="text" id="name" placeholder="Enter Name">
+    <input type="text" id="name" placeholder="Enter Name">
 
-<input type="number" id="age" placeholder="Enter Age">
+    <input type="number" id="age" placeholder="Enter Age">
 
-<button id="addBtn">Add Student</button>
+    <button id="addBtn">Add Student</button>
 
-<hr>
+    <button id="getBtn">Get Students</button>
 
-<button id="getBtn">Get Students</button>
+    <hr>
 
-<table border="1">
+    <table border="1">
 
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-        </tr>
-    </thead>
-
-    <tbody id="tbody"></tbody>
-
-</table>
-
-
-<script>
-
-
-// ADD STUDENT
-document.getElementById("addBtn").addEventListener("click", () => {
-
-    let name = document.getElementById("name").value;
-
-    let age = document.getElementById("age").value;
-
-
-    fetch("/students", {
-
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-            name: name,
-            age: age
-        })
-
-    })
-
-    .then(res => res.json())
-
-    .then(data => {
-        console.log(data);
-        alert("Student Added");
-    });
-
-});
-
-
-
-
-// GET STUDENTS
-document.getElementById("getBtn").addEventListener("click", () => {
-
-    fetch("/students")
-
-    .then(res => res.json())
-
-    .then(data => {
-
-        let rows = "";
-
-        data.forEach(student => {
-
-            rows += `
+        <thead>
             <tr>
-                <td>${student.name}</td>
-                <td>${student.age}</td>
+                <th>Name</th>
+                <th>Age</th>
             </tr>
-            `;
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+    </table>
+
+
+    <script>
+
+        // ADD STUDENT
+        document.getElementById("addBtn").addEventListener("click", () => {
+
+            let name = document.getElementById("name").value;
+
+            let age = document.getElementById("age").value;
+
+
+            fetch("/students", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    name: name,
+                    age: age
+                })
+
+            })
+
+            .then(res => res.json())
+
+            .then(data => {
+
+                alert(data.message);
+
+            });
 
         });
 
-        document.getElementById("tbody").innerHTML = rows;
-
-    });
-
-});
 
 
-</script>
+
+        // GET STUDENTS
+        document.getElementById("getBtn").addEventListener("click", () => {
+
+            fetch("/students")
+
+            .then(res => res.json())
+
+            .then(data => {
+
+                let rows = "";
+
+                data.forEach(student => {
+
+                    rows += `
+                        <tr>
+                            <td>${student.name}</td>
+                            <td>${student.age}</td>
+                        </tr>
+                    `;
+
+                });
+
+                document.getElementById("tbody").innerHTML = rows;
+
+            });
+
+        });
+
+    </script>
 
 </body>
+
+</html><!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student App</title>
+</head>
+
+<body>
+
+    <h1>Student Form</h1>
+
+    <input type="text" id="name" placeholder="Enter Name">
+
+    <input type="number" id="age" placeholder="Enter Age">
+
+    <button id="addBtn">Add Student</button>
+
+    <button id="getBtn">Get Students</button>
+
+    <hr>
+
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+    </table>
+
+
+    <script>
+
+        // ADD STUDENT
+        document.getElementById("addBtn").addEventListener("click", () => {
+
+            let name = document.getElementById("name").value;
+
+            let age = document.getElementById("age").value;
+
+
+            fetch("/students", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    name: name,
+                    age: age
+                })
+
+            })
+
+            .then(res => res.json())
+
+            .then(data => {
+
+                alert(data.message);
+
+            });
+
+        });
+
+
+
+
+        // GET STUDENTS
+        document.getElementById("getBtn").addEventListener("click", () => {
+
+            fetch("/students")
+
+            .then(res => res.json())
+
+            .then(data => {
+
+                let rows = "";
+
+                data.forEach(student => {
+
+                    rows += `
+                        <tr>
+                            <td>${student.name}</td>
+                            <td>${student.age}</td>
+                        </tr>
+                    `;
+
+                });
+
+                document.getElementById("tbody").innerHTML = rows;
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
 </html>
